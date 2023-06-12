@@ -1,10 +1,13 @@
 import React from 'react';
 
+// component
+import Form from './components/FormTemplate/Form';
+
 const App = () => {
     return (
-        <div>
-            
-        </div>
+        <>
+            <Form />
+        </>
     );
 };
 
