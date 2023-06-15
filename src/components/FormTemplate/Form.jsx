@@ -101,7 +101,7 @@ const Form = () => {
                                 </label>
                                 <div className="text-sm">
                                     <p onClick={() => setShowPassword(!showPassword)} className="font-semibold cursor-pointer text-indigo-600 hover:text-indigo-500">
-                                        Show
+                                        {showPassword ? 'Hide' : 'Show'}
                                     </p>
                                 </div>
                             </div>
