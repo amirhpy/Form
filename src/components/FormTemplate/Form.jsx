@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik'
 
 // Yup Validate
 import registerSchema from '../../validation/validation'
 
 const Form = () => {
+    const [showPassword, setShowPassword] = useState(false)
+
     const form = useFormik({
         initialValues: {
             username: '',
@@ -36,7 +38,7 @@ const Form = () => {
                     <form onSubmit={form.handleSubmit} className="space-y-6" action="#" method="POST">
                         <div>
                             <label className="block text-sm font-medium leading-6 text-gray-900">
-                                Username
+                                Your Name
                             </label>
                             <div className="mt-2">
                                 <input
@@ -45,7 +47,8 @@ const Form = () => {
                                     value={form.values.username}
                                     name="username"
                                     type="text"
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    placeholder='First and last name'
+                                    className="block w-full rounded-md border-0 pl-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                                 <span className='text-err'>
                                     {form.errors.username && form.touched.username && form.errors.username}
@@ -64,7 +67,7 @@ const Form = () => {
                                     value={form.values.email}
                                     name="email"
                                     type="email"
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="block w-full rounded-md border-0 pl-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                                 <span className='text-err'>
                                     {form.errors.email && form.touched.email && form.errors.email}
@@ -83,7 +86,7 @@ const Form = () => {
                                     value={form.values.number}
                                     name="number"
                                     type="text"
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="block w-full rounded-md border-0 pl-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                                 <span className='text-err'>
                                     {form.errors.number && form.touched.number && form.errors.number}
@@ -97,9 +100,9 @@ const Form = () => {
                                     Password
                                 </label>
                                 <div className="text-sm">
-                                    <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                                        Forgot password?
-                                    </a>
+                                    <p onClick={() => setShowPassword(!showPassword)} className="font-semibold cursor-pointer text-indigo-600 hover:text-indigo-500">
+                                        Show
+                                    </p>
                                 </div>
                             </div>
                             <div className="mt-2">
@@ -109,8 +112,9 @@ const Form = () => {
                                     value={form.values.password}
                                     id="password"
                                     name="password"
-                                    type="password"
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    placeholder='At least 8 characters'
+                                    type={showPassword ? 'text' : 'password'}
+                                    className="block w-full rounded-md border-0 pl-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                                 <span className='text-err'>
                                     {form.errors.password && form.touched.password && form.errors.password}
