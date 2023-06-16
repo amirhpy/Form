@@ -15,8 +15,20 @@ const Form = () => {
             password: ''
         },
 
-        onSubmit: (values, { setSubmitting }) => {
+        onSubmit: async (values, { setSubmitting }) => {
             console.log("Form Inputs Data =>", values);
+
+            const res = await fetch('http://localhost:4000/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(values)
+            })
+            console.log(res)
+            const newUserResult = await res.json()
+            console.log(newUserResult)
+
             setTimeout(() => {
                 setSubmitting(false);
             }, 3000);
@@ -67,6 +79,7 @@ const Form = () => {
                                     value={form.values.email}
                                     name="email"
                                     type="email"
+                                    placeholder='Enter your email'
                                     className="block w-full rounded-md border-0 pl-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                                 <span className='text-err'>
@@ -86,6 +99,7 @@ const Form = () => {
                                     value={form.values.number}
                                     name="number"
                                     type="text"
+                                    placeholder='Enter your Phone Number'
                                     className="block w-full rounded-md border-0 pl-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                                 <span className='text-err'>
