@@ -18,7 +18,7 @@ const Form = () => {
         onSubmit: async (values, { setSubmitting }) => {
             console.log("Form Inputs Data =>", values);
 
-            const res = await fetch('http://localhost:3000/users', {
+            const res = await fetch('https://form-database.vercel.app/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
