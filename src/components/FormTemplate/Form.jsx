@@ -34,6 +34,7 @@ const Form = () => {
 
             const res = await axios.post('https://form-server.iran.liara.run/users', values)
             console.log(res)
+            
             setTimeout(() => {
                 setSubmitting(false);
             }, 3000);
