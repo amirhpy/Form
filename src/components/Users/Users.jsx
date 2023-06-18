@@ -14,7 +14,7 @@ const Users = () => {
     }
 
     return (
-        <div className='w-full bg-schwarz h-screen p-10 text-white'>
+        <div className='w-full bg-schwarz p-10 text-white'>
             <div className='pl-3'>
                 <h3>Users</h3>
                 <p className='text-grau mt-1'>A list of all the users in your account including their name, email.</p>
