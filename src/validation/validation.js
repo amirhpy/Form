@@ -6,7 +6,6 @@ const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 const registerSchema = Yup.object().shape({
     username: Yup.string().min(3).max(12).required(),
     email: Yup.string().email().required(),
-    number: Yup.number().integer().required(),
     password: Yup.string().min(8).matches(passwordRules, { message: "Please create a stronger password" }).required()
 })
 
