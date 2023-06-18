@@ -18,7 +18,7 @@ const Form = () => {
         onSubmit: async (values, { setSubmitting }) => {
             console.log("Form Inputs Data =>", values);
 
-            const res = await fetch('https://form-database.vercel.app/users', {
+            const res = await fetch('https://form-server.iran.liara.run/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
