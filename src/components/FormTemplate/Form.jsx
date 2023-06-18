@@ -18,23 +18,20 @@ const Form = () => {
         onSubmit: async (values, { setSubmitting, resetForm }) => {
             resetForm()
 
-            // console.log("Form Inputs Data =>", values);
+            console.log("Form Inputs Data =>", values);
 
-            // const res = await fetch('https://form-server.iran.liara.run/users', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json'
-            //     },
-            //     body: JSON.stringify(values)
-            // })
+            const res = await fetch('https://form-server.iran.liara.run/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(values)
+            })
 
-            // console.log(res)
-            // const newUserResult = await res.json()
-            // console.log(newUserResult)
-
-            const res = await axios.post('https://form-server.iran.liara.run/users', values)
             console.log(res)
-            
+            const newUserResult = await res.json()
+            console.log(newUserResult)
+
             setTimeout(() => {
                 setSubmitting(false);
             }, 3000);
