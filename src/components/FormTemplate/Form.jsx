@@ -3,6 +3,7 @@ import { useFormik } from 'formik'
 
 // Yup Validate
 import registerSchema from '../../validation/validation'
+import axios from 'axios';
 
 const Form = () => {
     const [showPassword, setShowPassword] = useState(false)
@@ -14,20 +15,25 @@ const Form = () => {
             password: ''
         },
 
-        onSubmit: async (values, { setSubmitting }) => {
-            console.log("Form Inputs Data =>", values);
+        onSubmit: async (values, { setSubmitting, resetForm }) => {
+            resetForm()
 
-            const res = await fetch('https://form-server.iran.liara.run/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(values)
-            })
+            // console.log("Form Inputs Data =>", values);
+
+            // const res = await fetch('https://form-server.iran.liara.run/users', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify(values)
+            // })
+
+            // console.log(res)
+            // const newUserResult = await res.json()
+            // console.log(newUserResult)
+
+            const res = await axios.post('https://form-server.iran.liara.run/users', values)
             console.log(res)
-            const newUserResult = await res.json()
-            console.log(newUserResult)
-
             setTimeout(() => {
                 setSubmitting(false);
             }, 3000);

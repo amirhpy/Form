@@ -1,12 +1,13 @@
 import React from 'react';
+import { useRoutes } from 'react-router-dom';
 
-// component
-import Form from './components/FormTemplate/Form';
+import routes from './routes';
 
 const App = () => {
+    let router = useRoutes(routes)
     return (
         <>
-            <Form />
+            {router}
         </>
     );
 };
