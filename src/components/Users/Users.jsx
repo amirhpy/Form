@@ -14,24 +14,24 @@ const Users = () => {
     }
 
     return (
-        <div className='w-full bg-schwarz p-10 text-white'>
+        <div className='w-full p-10'>
             <div className='pl-3'>
-                <h3>Users</h3>
-                <p className='text-grau mt-1'>A list of all the users in your account including their name, email.</p>
+                <h3 className='text-2xl'>Users</h3>
+                <p className='mt-1'>A list of all the users in your account including their name, email.</p>
             </div>
             <div className='overflow-x-auto w-full lg:w-1/2 mt-5'>
                 <table className='w-full table-fixed'>
                     <thead>
-                        <tr className='border-b border-white text-left'>
+                        <tr className='border-b border-black text-left'>
                             <th className='p-3'>Name</th>
                             <th className='p-3'>Email</th>
                         </tr>
                     </thead>
                     <tbody>
                         {user.map(user => (
-                            <tr key={user.id} className='border-b border-white'>
+                            <tr key={user.id} className='border-b border-black'>
                                 <td className='p-3'>{user.username}</td>
-                                <td className='p-3 text-grau'>{user.email}</td>
+                                <td className='p-3'>{user.email}</td>
                             </tr>
                         ))}
                     </tbody>

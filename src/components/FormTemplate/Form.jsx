@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // Yup Validate
 import registerSchema from '../../validation/validation'
-import axios from 'axios';
 
 const Form = () => {
     const [showPassword, setShowPassword] = useState(false)
@@ -16,8 +18,6 @@ const Form = () => {
         },
 
         onSubmit: async (values, { setSubmitting, resetForm }) => {
-            resetForm()
-
             console.log("Form Inputs Data =>", values);
 
             const res = await fetch('https://form-server.iran.liara.run/users', {
@@ -27,21 +27,27 @@ const Form = () => {
                 },
                 body: JSON.stringify(values)
             })
-
-            console.log(res)
-            const newUserResult = await res.json()
-            console.log(newUserResult)
+                .then(data => {
+                    if (data.status === 500) {
+                        notify()
+                    }
+                })
 
             setTimeout(() => {
                 setSubmitting(false);
             }, 3000);
+
+            resetForm()
         },
 
         validationSchema: registerSchema
     })
 
+    const notify = () => toast.success("Sign in successful");
+
     return (
         <div>
+            <ToastContainer />
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
