@@ -43,7 +43,9 @@ const Form = () => {
         validationSchema: registerSchema
     })
 
-    const notify = () => toast.success("Sign in successful");
+    const notify = () => toast.success("Sign in successful", {
+        position: "bottom-left"
+    });
 
     return (
         <div>
