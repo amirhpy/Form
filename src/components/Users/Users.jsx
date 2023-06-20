@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 
-import gif from '../../assets/gif.gif'
+import gif from '../../assets/gif/gif.gif'
 
 const Users = () => {
     const [user, setUser] = useState([])
