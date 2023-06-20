@@ -21,12 +21,14 @@ const Users = () => {
                 <h3 className='text-2xl'>Users</h3>
                 <p className='mt-1'>A list of all the users in your account including their name, email.</p>
             </div>
-            <div className='overflow-x-auto w-full lg:w-1/2 mt-5'>
+            <div className='overflow-x-auto w-full mt-5'>
                 <table className='w-full table-fixed'>
                     <thead>
                         <tr className='border-b border-black text-left'>
+                            <th className='p-3'>ID</th>
                             <th className='p-3'>Name</th>
                             <th className='p-3'>Email</th>
+                            <th className='p-3'>Password</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,12 +38,14 @@ const Users = () => {
                                 <td className='p-3'>{user.email}</td>
                             </tr>
                         ))} */}
-                        {user.length ? (user.map(user => (
+                        {user.length ? user.map(user => (
                             <tr key={user.id} className='border-b border-black'>
+                                <td className='p-3'>{user.id}</td>
                                 <td className='p-3'>{user.username}</td>
                                 <td className='p-3'>{user.email}</td>
+                                <td className='p-3'>{user.password}</td>
                             </tr>
-                        ))) : <img className='w-1/5' src={gif} alt='gif' />}
+                        )) : <img className='w-1/5' src={gif} alt='gif' />}
                     </tbody>
                 </table>
             </div>

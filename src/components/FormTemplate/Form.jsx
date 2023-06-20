@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Yup Validate
-import registerSchema from '../../validation/validation'
+import { registerSchema } from '../../validation/validation'
 
 const Form = () => {
     const [showPassword, setShowPassword] = useState(false)
@@ -27,11 +27,10 @@ const Form = () => {
                 },
                 body: JSON.stringify(values)
             })
-                .then(data => {
-                    if (data.status === 500) {
-                        notify()
-                    }
-                })
+            console.log(res)
+            if (res.status === 500) {
+                notify()
+            }
 
             setTimeout(() => {
                 setSubmitting(false);

@@ -9,4 +9,8 @@ const registerSchema = Yup.object().shape({
     password: Yup.string().min(8).matches(passwordRules, { message: "Please create a stronger password" }).required()
 })
 
-export default registerSchema
+const deleteSchema = Yup.object().shape({
+    id: Yup.number().required()
+})
+
+export { registerSchema, deleteSchema }
