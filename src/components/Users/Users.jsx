@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 
+import gif from '../../assets/gif.gif'
+
 const Users = () => {
     const [user, setUser] = useState([])
     useEffect(() => {
@@ -28,12 +30,18 @@ const Users = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {user.map(user => (
+                        {/* {user.map(user => (
                             <tr key={user.id} className='border-b border-black'>
                                 <td className='p-3'>{user.username}</td>
                                 <td className='p-3'>{user.email}</td>
                             </tr>
-                        ))}
+                        ))} */}
+                        {user.length ? (user.map(user => (
+                            <tr key={user.id} className='border-b border-black'>
+                                <td className='p-3'>{user.username}</td>
+                                <td className='p-3'>{user.email}</td>
+                            </tr>
+                        ))) : <img className='w-1/5' src={gif} alt='gif' />}
                     </tbody>
                 </table>
             </div>
