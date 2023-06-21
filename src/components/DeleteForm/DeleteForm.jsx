@@ -52,7 +52,7 @@ const DeleteForm = () => {
                     <form onSubmit={deleteForms.handleSubmit} className="space-y-6" action="#" method="POST">
                         <div>
                             <label className="block text-sm font-medium leading-6 text-gray-900">
-                                User ID
+                                Your ID
                             </label>
                             <div className="mt-2">
                                 <input

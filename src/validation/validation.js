@@ -13,4 +13,11 @@ const deleteSchema = Yup.object().shape({
     id: Yup.number().required()
 })
 
-export { registerSchema, deleteSchema }
+const renameSchema = Yup.object().shape({
+    id: Yup.number().required(),
+    username: Yup.string().min(3).max(12).required(),
+    email: Yup.string().email().required(),
+    password: Yup.string().min(8).matches(passwordRules, { message: "Please create a stronger password" }).required()
+})
+
+export { registerSchema, deleteSchema, renameSchema }
