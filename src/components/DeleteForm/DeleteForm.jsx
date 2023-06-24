@@ -16,17 +16,19 @@ const DeleteForm = () => {
         onSubmit: async (values, { setSubmitting, resetForm }) => {
             console.log("Form Inputs Data =>", values);
 
-            const res = await fetch(`https://form-server.iran.liara.run/users/${values.id}`, {
+            await fetch(`https://form-server.iran.liara.run/users/${values.id}`, {
                 method: 'DELETE'
             })
-            console.log(res)
-            if (res.status === 500) {
-                notify()
-            }
-
+                .then(res => {
+                    console.log(res)
+                    if (res.status === 500) {
+                        notify()
+                    }
+                })
+                .catch(err => console.log(err))
             setTimeout(() => {
                 setSubmitting(false);
-            }, 3000);
+            }, 5000);
 
             resetForm()
         },

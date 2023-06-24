@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik'
+import axios from 'axios';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,17 +21,13 @@ const Form = () => {
         onSubmit: async (values, { setSubmitting, resetForm }) => {
             console.log("Form Inputs Data =>", values);
 
-            const res = await fetch('https://form-server.iran.liara.run/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(values)
-            })
-            console.log(res)
-            if (res.status === 500) {
-                notify()
-            }
+            axios
+                .post('https://form-server.iran.liara.run/users', values)
+                .then(res => res.data)
+                .then(data => {
+                    console.log(data)
+                })
+                .catch(err => console.log(err))
 
             setTimeout(() => {
                 setSubmitting(false);

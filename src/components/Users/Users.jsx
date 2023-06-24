@@ -10,8 +10,8 @@ const Users = () => {
     }, [])
 
     const getAllUsers = () => {
-        axios.get('https://form-server.iran.liara.run/users')
-            .then(response => response.data)
+        axios.get('https://form-server.iran.liara.run/users/')
+            .then(res => res.data)
             .then(data => setUser(data))
     }
 

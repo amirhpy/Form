@@ -10,7 +10,8 @@ export default {
         'succ': '#198754',
         'err': '#dc3545',
         'grau': '#d1d5db',
-        'grau-100': '#e5e7eb'
+        'grau-100': '#e5e7eb',
+        'transparent': 'transparent'
       },
       backgroundColor: {
         'schwarz': '#111827'
