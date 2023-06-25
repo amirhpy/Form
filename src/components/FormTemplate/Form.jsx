@@ -20,13 +20,9 @@ const Form = () => {
 
         onSubmit: async (values, { setSubmitting, resetForm }) => {
             console.log("Form Inputs Data =>", values);
-
-            axios
+            await axios
                 .post('https://form-server.iran.liara.run/users', values)
-                .then(res => res.data)
-                .then(data => {
-                    console.log(data)
-                })
+                .then(res => console.log(res.data))
                 .catch(err => console.log(err))
 
             setTimeout(() => {
@@ -34,6 +30,7 @@ const Form = () => {
             }, 3000);
 
             resetForm()
+            notify()
         },
 
         validationSchema: registerSchema

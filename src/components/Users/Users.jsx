@@ -11,8 +11,8 @@ const Users = () => {
 
     const getAllUsers = () => {
         axios.get('https://form-server.iran.liara.run/users/')
-            .then(res => res.data)
-            .then(data => setUser(data))
+            .then(res => setUser(res.data))
+            .catch(err => console.log(err))
     }
 
     return (
@@ -33,14 +33,20 @@ const Users = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {user.map((user) => (
+                            {user.length ? user.map((user) => (
                                 <tr key={user.id}>
                                     <td className="py-2 px-4 border-b">{user.id}</td>
                                     <td className="py-2 px-4 border-b">{user.username}</td>
                                     <td className="py-2 px-4 border-b">{user.email}</td>
                                     <td className="py-2 px-4 border-b">{user.password}</td>
                                 </tr>
-                            ))}
+                            )) : (
+                                <tr>
+                                    <td className="py-2 px-4 border-b" colSpan="4">
+                                        <img className="w-1/5 md:w-1/12" src={gif} alt="gif" />
+                                    </td>
+                                </tr>
+                            )}
                         </tbody>
                     </table>
                 </div>

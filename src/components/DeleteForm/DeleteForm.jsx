@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // Yup Validate
 import { deleteSchema } from '../../validation/validation'
+import axios from 'axios';
 
 const DeleteForm = () => {
     const deleteForms = useFormik({
@@ -16,21 +17,15 @@ const DeleteForm = () => {
         onSubmit: async (values, { setSubmitting, resetForm }) => {
             console.log("Form Inputs Data =>", values);
 
-            await fetch(`https://form-server.iran.liara.run/users/${values.id}`, {
-                method: 'DELETE'
-            })
-                .then(res => {
-                    console.log(res)
-                    if (res.status === 500) {
-                        notify()
-                    }
-                })
+            await axios.delete(`https://form-server.iran.liara.run/users/${values.id}`)
+                .then(res => console.log(res))
                 .catch(err => console.log(err))
             setTimeout(() => {
                 setSubmitting(false);
             }, 5000);
 
             resetForm()
+            notify()
         },
 
         validationSchema: deleteSchema
