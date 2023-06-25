@@ -17,37 +17,33 @@ const Users = () => {
 
     return (
         <div className='w-full p-10'>
-            <div className='pl-3'>
+            <div>
                 <h3 className='text-2xl'>Users</h3>
                 <p className='mt-1'>A list of all the users in your account including their name, email.</p>
             </div>
-            <div className='overflow-x-auto w-full mt-5'>
-                <table className='w-full table-fixed'>
-                    <thead>
-                        <tr className='border-b border-black text-left'>
-                            <th className='p-3'>ID</th>
-                            <th className='p-3'>Name</th>
-                            <th className='p-3'>Email</th>
-                            <th className='p-3'>Password</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {/* {user.map(user => (
-                            <tr key={user.id} className='border-b border-black'>
-                                <td className='p-3'>{user.username}</td>
-                                <td className='p-3'>{user.email}</td>
+            <div className="container mx-auto mt-6">
+                <div className="overflow-x-auto">
+                    <table className="w-full bg-white border border-gray-300">
+                        <thead>
+                            <tr>
+                                <th className="py-2 px-4 border-b text-left">ID</th>
+                                <th className="py-2 px-4 border-b text-left">Name</th>
+                                <th className="py-2 px-4 border-b text-left">Email</th>
+                                <th className="py-2 px-4 border-b text-left">Password</th>
                             </tr>
-                        ))} */}
-                        {user.length ? user.map(user => (
-                            <tr key={user.id} className='border-b border-black'>
-                                <td className='p-3'>{user.id}</td>
-                                <td className='p-3'>{user.username}</td>
-                                <td className='p-3'>{user.email}</td>
-                                <td className='p-3'>{user.password}</td>
-                            </tr>
-                        )) : <img className='w-1/5' src={gif} alt='gif' />}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {user.map((user) => (
+                                <tr key={user.id}>
+                                    <td className="py-2 px-4 border-b">{user.id}</td>
+                                    <td className="py-2 px-4 border-b">{user.username}</td>
+                                    <td className="py-2 px-4 border-b">{user.email}</td>
+                                    <td className="py-2 px-4 border-b">{user.password}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );
